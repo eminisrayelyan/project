@@ -68,7 +68,7 @@ for (var y = 0; y < matrix.length; y++) {
   }
 }
 function setup() {
-  frameRate(6);
+  frameRate(5);
   createCanvas(matrix[0].length * side, matrix.length * side);
   background('#acacac');
 }

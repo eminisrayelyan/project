@@ -17,7 +17,7 @@ class Aryuc extends LivingCreature{
         ];
     }
     chooseCell(character) {
-        this.getNewCoordinates();
+        this.getNewDirection();
         return super.chooseCell(character);
     }
     mult() {

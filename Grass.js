@@ -6,10 +6,7 @@ class Grass extends LivingCreature{
         
         
     }
-    chooseCell(character) {
-        this.getNewCoordinates();
-        return super.chooseCell(character);
-    }
+
     mult() {
         var empty = random(this.chooseCell(0));
         this.multiply++
