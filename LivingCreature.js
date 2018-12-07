@@ -3,7 +3,7 @@ class LivingCreature {
         this.x = x;
         this.y = y;
         this.multiply = 0;
-        this.index = index;
+        // this.index = index;
         this.directions = [
             [this.x - 1, this.y - 1],
             [this.x, this.y - 1],

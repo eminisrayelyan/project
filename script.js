@@ -12,8 +12,6 @@ function fillMatrix(n, m) {
   }
   return matrix
 }
-
-
 for (var a = 0; a < 400; a++) {
   var x = Math.floor(Math.random() * 100)
   var y = Math.floor(Math.random() * 100)
