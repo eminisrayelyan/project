@@ -1,10 +1,11 @@
-class Grass extends LivingCreature{
+var LivingCreature = require("./LivingCreature.js")
+module.exports = class Grass extends LivingCreature {
     constructor(x, y, index) {
-        super(x,y);
+        super(x, y);
         this.index = index;
         this.energy = 9;
-        
-        
+
+
     }
 
     mult() {

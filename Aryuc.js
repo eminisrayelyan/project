@@ -1,8 +1,9 @@
-class Aryuc extends LivingCreature{
+var LivingCreature = require("./LivingCreature.js")
+module.exports = class Aryuc extends LivingCreature {
     constructor(x, y) {
-        super(x,y);
+        super(x, y);
         this.energy = 9;
-        
+
     }
     getNewDirection() {
         this.directions = [

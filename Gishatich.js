@@ -1,8 +1,9 @@
-class Gishatich extends LivingCreature{
+var LivingCreature = require("./LivingCreature.js")
+module.exports = class Grass extends LivingCreature {
     constructor(x, y) {
-        super(x,y);
+        super(x, y);
         this.energy = 2;
-        
+
     }
     getNewDirection() {
         this.directions = [

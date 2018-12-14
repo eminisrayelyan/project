@@ -1,8 +1,9 @@
-class Xotaker extends LivingCreature {
+var LivingCreature = require("./LivingCreature.js")
+module.exports = class Xotaker extends LivingCreature {
     constructor(x, y) {
-        super(x,y);
+        super(x, y);
         this.energy = 7;
-        
+
     }
     getNewDirection() {
         this.directions = [
@@ -20,7 +21,7 @@ class Xotaker extends LivingCreature {
         this.getNewDirection();
         return super.chooseCell(character);
     }
- 
+
     mult() {
         var empty = random(this.chooseCell(0));
         if (empty && this.energy > 5) {

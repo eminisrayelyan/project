@@ -93,7 +93,7 @@ class Amenates {
             this.y = newY;
         }
     }
-    
+
     eat() {
         var food = random(this.chooseCell(1))
         if (food) {
