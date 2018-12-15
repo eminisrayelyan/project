@@ -22,7 +22,8 @@ module.exports = class Aryuc extends LivingCreature {
         return super.chooseCell(character);
     }
     mult() {
-        var empty = random(this.chooseCell(0));
+        var array = this.chooseCell(0); 
+        var empty = array[Math.floor(Math.random() * array.length)];
         if (empty && this.energy > 6) {
             var newX = empty[0];
             var newY = empty[1];
@@ -32,7 +33,8 @@ module.exports = class Aryuc extends LivingCreature {
         }
     }
     move() {
-        var empty = random(this.chooseCell(0));
+        var array = this.chooseCell(0); 
+        var empty = array[Math.floor(Math.random() * array.length)];
         this.energy -= 3
         if (empty) {
             var newX = empty[0];
@@ -44,7 +46,8 @@ module.exports = class Aryuc extends LivingCreature {
         }
     }
     eat() {
-        var food = random(this.chooseCell(3))
+        var array = this.chooseCell(3); 
+        var food= array[Math.floor(Math.random() * array.length)];
         if (food) {
             var newX = food[0];
             var newY = food[1];
@@ -61,7 +64,8 @@ module.exports = class Aryuc extends LivingCreature {
         }
     }
     eat2() {
-        var food = random(this.chooseCell(4))
+        var array = this.chooseCell(4); 
+        var food= array[Math.floor(Math.random() * array.length)];
         if (food) {
             var newX = food[0];
             var newY = food[1];

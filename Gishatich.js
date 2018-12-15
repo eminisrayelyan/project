@@ -22,7 +22,8 @@ module.exports = class Grass extends LivingCreature {
         return super.chooseCell(character);
     }
     mult() {
-        var empty = random(this.chooseCell(0));
+        var array = this.chooseCell(0); 
+        var empty = array[Math.floor(Math.random() * array.length)];
         if (empty && this.energy > 5) {
             var newX = empty[0];
             var newY = empty[1];
@@ -32,7 +33,8 @@ module.exports = class Grass extends LivingCreature {
         }
     }
     move() {
-        var empty = random(this.chooseCell(0));
+        var array = this.chooseCell(0); 
+        var empty = array[Math.floor(Math.random() * array.length)];
         this.energy--
         if (empty) {
             var newX = empty[0];
@@ -44,7 +46,8 @@ module.exports = class Grass extends LivingCreature {
         }
     }
     eat() {
-        var food = random(this.chooseCell(2))
+        var array = this.chooseCell(2); 
+        var food = array[Math.floor(Math.random() * array.length)];
         if (food) {
             var newX = food[0];
             var newY = food[1];
