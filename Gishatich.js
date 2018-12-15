@@ -1,5 +1,5 @@
 var LivingCreature = require("./LivingCreature.js")
-module.exports = class Grass extends LivingCreature {
+module.exports = class Gishatich extends LivingCreature {
     constructor(x, y) {
         super(x, y);
         this.energy = 2;

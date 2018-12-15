@@ -3,15 +3,20 @@ var app = express();
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
 
-
 app.use(express.static("."));
-app.get('/stats', function (req, res) {
+app.get('/', function (req, res) {
   res.redirect('index.html');
 });
 server.listen(3000);
+var cl = false
+io.on("connection", function (socket) {
+  if (cl) {
+    setInterval(drawserverayin, 200);
+    cl = true;
+  }
+});
 
-
-var matrix = [];
+matrix = [];
 matrix = fillMatrix(100, 100)
 console.log(matrix)
 function fillMatrix(n, m) {
@@ -56,11 +61,11 @@ for (var e = 0; e < 240; e++) {
   var y = Math.floor(Math.random() * 100)
   matrix[y][x] = 5
 }
-var grassArr = [];
-var xotakerArr = [];
-var GishatichArr = [];
-var AmenatesArr = [];
-var AryucArr = [];
+ grassArr = [];
+ xotakerArr = [];
+ GishatichArr = [];
+ AmenatesArr = [];
+ AryucArr = [];
 for (var y = 0; y < matrix.length; y++) {
   for (var x = 0; x < matrix[y].length; x++) {
     if (matrix[y][x] == 1) {
@@ -85,8 +90,6 @@ for (var y = 0; y < matrix.length; y++) {
     }
   }
 }
-
-
 
 function drawserverayin() {
   for (var i in grassArr) {
@@ -118,9 +121,11 @@ function drawserverayin() {
     AryucArr[i].die();
   }
   console.log(matrix)
+  io.sockets.emit("matrix", matrix)
+
 }
-io.on("connection", function (socket) {
-  io.socket.emit("matrix", matrix)
-});
 setInterval(drawserverayin, 200)
+io.on("connection", function (socket) {
+});
+
 

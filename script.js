@@ -1,17 +1,7 @@
-var matrix = [];
-matrix = fillMatrix(100, 100)
-console.log(matrix)
-function fillMatrix(n, m) {
-  var matrix = []
-  for (var i = 0; i < n; i++) {
-    matrix.push([])
-    for (var a = 0; a < m; a++) {
 
-      matrix[i].push(0)
-    }
-  }
-  return matrix
-}
+var socket = io();
+
+
 
 var side = 7;
 function setup() {
@@ -19,7 +9,7 @@ function setup() {
   createCanvas(matrix[0].length * side, matrix.length * side);
   background('#acacac');
 }
-function drawmatrix() {
+function drawmatrix(matrix) {
   for (var y = 0; y < matrix.length; y++) {
     for (var x = 0; x < matrix[y].length; x++) {
       if (matrix[y][x] == 1) {
@@ -46,5 +36,5 @@ function drawmatrix() {
 
 }
 
-  socket.on("matrix", drawmatrix)
+socket.on("matrix", matrix)
 
