@@ -15,7 +15,6 @@ io.on("connection", function (socket) {
     cl = true;
   }
 });
-
 matrix = [];
 matrix = fillMatrix(100, 100)
 console.log(matrix)
@@ -61,11 +60,11 @@ for (var e = 0; e < 240; e++) {
   var y = Math.floor(Math.random() * 100)
   matrix[y][x] = 5
 }
- grassArr = [];
- xotakerArr = [];
- GishatichArr = [];
- AmenatesArr = [];
- AryucArr = [];
+grassArr = [];
+xotakerArr = [];
+GishatichArr = [];
+AmenatesArr = [];
+AryucArr = [];
 for (var y = 0; y < matrix.length; y++) {
   for (var x = 0; x < matrix[y].length; x++) {
     if (matrix[y][x] == 1) {
@@ -90,7 +89,6 @@ for (var y = 0; y < matrix.length; y++) {
     }
   }
 }
-
 function drawserverayin() {
   for (var i in grassArr) {
     grassArr[i].mult();

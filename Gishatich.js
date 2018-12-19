@@ -3,7 +3,6 @@ module.exports = class Gishatich extends LivingCreature {
     constructor(x, y) {
         super(x, y);
         this.energy = 2;
-
     }
     getNewDirection() {
         this.directions = [
@@ -22,7 +21,7 @@ module.exports = class Gishatich extends LivingCreature {
         return super.chooseCell(character);
     }
     mult() {
-        var array = this.chooseCell(0); 
+        var array = this.chooseCell(0);
         var empty = array[Math.floor(Math.random() * array.length)];
         if (empty && this.energy > 5) {
             var newX = empty[0];
@@ -33,7 +32,7 @@ module.exports = class Gishatich extends LivingCreature {
         }
     }
     move() {
-        var array = this.chooseCell(0); 
+        var array = this.chooseCell(0);
         var empty = array[Math.floor(Math.random() * array.length)];
         this.energy--
         if (empty) {
@@ -46,7 +45,7 @@ module.exports = class Gishatich extends LivingCreature {
         }
     }
     eat() {
-        var array = this.chooseCell(2); 
+        var array = this.chooseCell(2);
         var food = array[Math.floor(Math.random() * array.length)];
         if (food) {
             var newX = food[0];

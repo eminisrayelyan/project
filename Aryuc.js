@@ -3,7 +3,6 @@ module.exports = class Aryuc extends LivingCreature {
     constructor(x, y) {
         super(x, y);
         this.energy = 9;
-
     }
     getNewDirection() {
         this.directions = [
@@ -22,7 +21,7 @@ module.exports = class Aryuc extends LivingCreature {
         return super.chooseCell(character);
     }
     mult() {
-        var array = this.chooseCell(0); 
+        var array = this.chooseCell(0);
         var empty = array[Math.floor(Math.random() * array.length)];
         if (empty && this.energy > 6) {
             var newX = empty[0];
@@ -33,7 +32,7 @@ module.exports = class Aryuc extends LivingCreature {
         }
     }
     move() {
-        var array = this.chooseCell(0); 
+        var array = this.chooseCell(0);
         var empty = array[Math.floor(Math.random() * array.length)];
         this.energy -= 3
         if (empty) {
@@ -46,8 +45,8 @@ module.exports = class Aryuc extends LivingCreature {
         }
     }
     eat() {
-        var array = this.chooseCell(3); 
-        var food= array[Math.floor(Math.random() * array.length)];
+        var array = this.chooseCell(3);
+        var food = array[Math.floor(Math.random() * array.length)];
         if (food) {
             var newX = food[0];
             var newY = food[1];
@@ -64,8 +63,8 @@ module.exports = class Aryuc extends LivingCreature {
         }
     }
     eat2() {
-        var array = this.chooseCell(4); 
-        var food= array[Math.floor(Math.random() * array.length)];
+        var array = this.chooseCell(4);
+        var food = array[Math.floor(Math.random() * array.length)];
         if (food) {
             var newX = food[0];
             var newY = food[1];

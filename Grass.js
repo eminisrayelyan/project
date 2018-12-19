@@ -4,12 +4,9 @@ module.exports = class Grass extends LivingCreature {
         super(x, y);
         this.index = index;
         this.energy = 9;
-
-
     }
-
     mult() {
-        var array = this.chooseCell(0); 
+        var array = this.chooseCell(0);
         var empty = array[Math.floor(Math.random() * array.length)];
         this.multiply++
         if (empty && this.multiply > 4) {

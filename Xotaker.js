@@ -3,7 +3,6 @@ module.exports = class Xotaker extends LivingCreature {
     constructor(x, y) {
         super(x, y);
         this.energy = 7;
-
     }
     getNewDirection() {
         this.directions = [
@@ -21,9 +20,8 @@ module.exports = class Xotaker extends LivingCreature {
         this.getNewDirection();
         return super.chooseCell(character);
     }
-
     mult() {
-         var array = this.chooseCell(0); 
+        var array = this.chooseCell(0);
         var empty = array[Math.floor(Math.random() * array.length)];
         if (empty && this.energy > 5) {
             var newX = empty[0];
@@ -31,12 +29,10 @@ module.exports = class Xotaker extends LivingCreature {
             matrix[newY][newX] = 2;
             var neXt = new Xotaker(newX, newY);
             xotakerArr.push(neXt)
-
         }
     }
     move() {
-         
-        var array = this.chooseCell(0); 
+        var array = this.chooseCell(0);
         var empty = array[Math.floor(Math.random() * array.length)];
         this.energy--
         if (empty) {
