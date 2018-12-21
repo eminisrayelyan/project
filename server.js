@@ -1,3 +1,5 @@
+weather = "winter"
+
 var express = require('express');
 var app = express();
 var server = require('http').Server(app);
@@ -15,9 +17,7 @@ io.on("connection", function (socket) {
     cl = true;
   }
 });
-matrix = [];
 matrix = fillMatrix(100, 100)
-console.log(matrix)
 function fillMatrix(n, m) {
   var matrix = []
   for (var i = 0; i < n; i++) {
@@ -118,12 +118,26 @@ function drawserverayin() {
     AryucArr[i].mult();
     AryucArr[i].die();
   }
-  console.log(matrix)
   io.sockets.emit("matrix", matrix)
 
 }
-setInterval(drawserverayin, 200)
+setInterval(drawserverayin, 1000)
 io.on("connection", function (socket) {
 });
 
-
+function changeweather() {
+  if (weather == "winter") {
+    weather = "spring"
+  }
+  else if (weather == "spring") {
+    weather = "summer"
+  }
+  else if (weather == "summer") {
+    weather = "autumn"
+  }
+  else if (weather == "autumn") {
+    weather = "winter"
+  }
+  io.sockets.emit("weather", weather)
+}
+setInterval(changeweather, 3000)

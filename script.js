@@ -1,7 +1,9 @@
+var weather = "winter"
+
 var socket = io();
-var side = 50
-var m = 20;
-var n = 30;
+var side = 8
+var m = 100;
+var n = 100;
 function setup() {
   frameRate(5);
   createCanvas(m * side, n * side);
@@ -28,9 +30,25 @@ function drawmatrix(matrix) {
       else if (matrix[y][x] == 5) {
         fill("orange")
       }
+      else if (matrix[y][x] == 0) {
+        if (weather == "winter") {
+          fill("white")
+        } 
+        else if (weather == "spring") {
+          fill("lightgreen")
+        }
+        else if (weather == "summer") {
+          fill("yellow")
+        }
+      }
+
+
       rect(x * side, y * side, side, side);
     }
   }
 }
 socket.on("matrix", drawmatrix);
+socket.on("weather", function (w) {
+  weather = w;
+});
 
