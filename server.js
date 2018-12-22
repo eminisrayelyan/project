@@ -3,6 +3,7 @@ var express = require('express');
 var app = express();
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
+var fs = require('fs');
 app.use(express.static("."));
 app.get('/', function (req, res) {
   res.redirect('index.html');
@@ -63,27 +64,37 @@ xotakerArr = [];
 GishatichArr = [];
 AmenatesArr = [];
 AryucArr = [];
+GrassStatics = 0;
+Xotakerstatics = 0;
+GishatichStatics = 0;
+AmenatesStatics = 0;
+AryucStatics = 0;
 for (var y = 0; y < matrix.length; y++) {
   for (var x = 0; x < matrix[y].length; x++) {
     if (matrix[y][x] == 1) {
       var gr = new Grass(x, y, 1)
       grassArr.push(gr)
+      GrassStatics++
     }
     else if (matrix[y][x] == 2) {
       var kt = new Xotaker(x, y);
       xotakerArr.push(kt)
+      Xotakerstatics++
     }
     else if (matrix[y][x] == 3) {
       var xr = new Gishatich(x, y);
       GishatichArr.push(xr)
+      GishatichStatics++
     }
     else if (matrix[y][x] == 4) {
       var am = new Amenates(x, y);
       AmenatesArr.push(am)
+      AmenatesStatics++
     }
     else if (matrix[y][x] == 5) {
       var ar = new Aryuc(x, y);
       AryucArr.push(ar)
+      AryucStatics++
     }
   }
 }
@@ -146,3 +157,17 @@ function changeweather() {
   io.sockets.emit("weather", weather)
 }
 setInterval(changeweather, 3000)
+var statistics = {"stat":[]};
+setInterval(function(){
+  statistics.stat.push({
+    "GrassStatics": GrassStatics,
+    "Xotakerstatics": Xotakerstatics,
+    "GishatichStatics": GishatichStatics,
+    "AmenatesStatics": AmenatesStatics,
+    "AryucStatics": AryucStatics,
+  });
+  fs.writeFile("statistics.json", JSON.stringify(statistics), function(err){
+    if(err) throw (err)
+
+  })
+}, 3000 )

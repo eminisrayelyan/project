@@ -24,6 +24,7 @@ module.exports = class Aryuc extends LivingCreature {
         var array = this.chooseCell(0);
         var empty = array[Math.floor(Math.random() * array.length)];
         if (empty && this.energy > 6) {
+            AryucStatics++
             var newX = empty[0];
             var newY = empty[1];
             matrix[newY][newX] = 5;
