@@ -1,5 +1,5 @@
 var weather = "winter"
-
+var weatherh1 = document.getElementById("weather")
 var socket = io();
 var side = 8
 var m = 100;
@@ -13,7 +13,18 @@ function drawmatrix(matrix) {
   for (var y = 0; y < matrix.length; y++) {
     for (var x = 0; x < matrix[y].length; x++) {
       if (matrix[y][x] == 1) {
-        fill("green");
+        if (weather == "winter") {
+          fill("#81FF8E")
+        }
+        if (weather == "spring") {
+          fill("green");
+        }
+        if (weather == "summer") {
+          fill("#00FF00")
+        }
+        if (weather == "autumn") {
+          fill("#ff9900")
+        }
       }
       else if (matrix[y][x] == 0) {
         fill("#acacac");
@@ -28,21 +39,19 @@ function drawmatrix(matrix) {
         fill("lightblue")
       }
       else if (matrix[y][x] == 5) {
-        fill("orange")
-      }
-      else if (matrix[y][x] == 0) {
         if (weather == "winter") {
-          fill("white")
-        } 
-        else if (weather == "spring") {
-          fill("lightgreen")
+          fill("brown")
         }
-        else if (weather == "summer") {
-          fill("yellow")
+        if (weather == "spring") {
+          fill("orange");
+        }
+        if (weather == "summer") {
+          fill("orange")
+        }
+        if (weather == "autumn") {
+          fill("brown")
         }
       }
-
-
       rect(x * side, y * side, side, side);
     }
   }
@@ -50,5 +59,7 @@ function drawmatrix(matrix) {
 socket.on("matrix", drawmatrix);
 socket.on("weather", function (w) {
   weather = w;
+  console.log(weather);
+  weatherh1.innerHTML = weather
 });
 

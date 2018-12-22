@@ -1,10 +1,8 @@
 weather = "winter"
-
 var express = require('express');
 var app = express();
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
-
 app.use(express.static("."));
 app.get('/', function (req, res) {
   res.redirect('index.html');
@@ -35,27 +33,27 @@ var Gishatich = require("./Gishatich.js");
 var Amenates = require("./Amenates.js");
 var Aryuc = require("./Aryuc.js");
 
-for (var a = 0; a < 400; a++) {
+for (var a = 0; a < 1000; a++) {
   var x = Math.floor(Math.random() * 100)
   var y = Math.floor(Math.random() * 100)
   matrix[y][x] = 1
 }
-for (var b = 0; b < 350; b++) {
+for (var b = 0; b < 100; b++) {
   var x = Math.floor(Math.random() * 100)
   var y = Math.floor(Math.random() * 100)
   matrix[y][x] = 2
 }
-for (var c = 0; c < 450; c++) {
+for (var c = 0; c < 200; c++) {
   var x = Math.floor(Math.random() * 100)
   var y = Math.floor(Math.random() * 100)
   matrix[y][x] = 3
 }
-for (var d = 0; d < 260; d++) {
+for (var d = 0; d < 60; d++) {
   var x = Math.floor(Math.random() * 100)
   var y = Math.floor(Math.random() * 100)
   matrix[y][x] = 4
 }
-for (var e = 0; e < 240; e++) {
+for (var e = 0; e < 120; e++) {
   var x = Math.floor(Math.random() * 100)
   var y = Math.floor(Math.random() * 100)
   matrix[y][x] = 5
@@ -91,24 +89,32 @@ for (var y = 0; y < matrix.length; y++) {
 }
 function drawserverayin() {
   for (var i in grassArr) {
-    grassArr[i].mult();
+    if (weather != "winter") {
+      grassArr[i].mult();
+    }
   }
   for (var i in xotakerArr) {
     xotakerArr[i].eat();
     xotakerArr[i].move();
-    xotakerArr[i].mult();
+    if (weather != "spring") {
+      xotakerArr[i].mult();
+    }
     xotakerArr[i].die();
   }
   for (var i in GishatichArr) {
     GishatichArr[i].eat();
     GishatichArr[i].move();
-    GishatichArr[i].mult();
+    if (weather != "autumn") {
+      GishatichArr[i].mult();
+    }
     GishatichArr[i].die();
   }
   for (var i in AmenatesArr) {
     AmenatesArr[i].eat();
     AmenatesArr[i].move();
-    AmenatesArr[i].mult();
+    if (weather != "autumn" || weather != "winter") {
+      AmenatesArr[i].mult();
+    }
     AmenatesArr[i].die();
   }
   for (var i in AryucArr) {
@@ -119,7 +125,6 @@ function drawserverayin() {
     AryucArr[i].die();
   }
   io.sockets.emit("matrix", matrix)
-
 }
 setInterval(drawserverayin, 1000)
 io.on("connection", function (socket) {

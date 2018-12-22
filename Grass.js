@@ -6,7 +6,7 @@ module.exports = class Grass extends LivingCreature {
         this.energy = 9;
     }
     mult() {
-        if (weather != "winter") {
+       
             var array = this.chooseCell(0);
             var empty = array[Math.floor(Math.random() * array.length)];
             this.multiply++
@@ -20,4 +20,3 @@ module.exports = class Grass extends LivingCreature {
         }
 
     }
-}
